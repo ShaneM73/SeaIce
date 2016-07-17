@@ -49,17 +49,14 @@ print("Quickshift number of segments: %d" % len(np.unique(segments_quick)))
 #plt.imshow(mark_boundaries(img,segments_slic))
 #plt.imsave('result.jpg', mark_boundaries(img,segments_slic))
 
+
 plt.imshow(mark_boundaries(img,segments_quick))
 plt.imsave('result.jpg', mark_boundaries(img,segments_quick))
 
-properties = measure.regionprops(segments_quick)
+properties = measure.regionprops(segments_quick, img[:,:,1])
 [prop.area for prop in properties]
 
-[prop.MeanIntensity for prop in properties]
-#for prop in region:
-#    print(prop, region[prop])
-
-
+[prop.mean_intensity for prop in properties]
 
 
 
